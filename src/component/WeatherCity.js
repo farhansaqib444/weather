@@ -3,10 +3,10 @@ import { Card, Input, Row, Col } from 'antd';
 
 
 const WeatherCity = () => {
-    const [ city, setCity ] = useState(null);
-    const [ search, setSearch ] = useState("Lahore");
+    const [city, setCity] = useState(null);
+    const [search, setSearch] = useState("Lahore");
 
-    useEffect( () => {
+    useEffect(() => {
         fetchApi();
     }, []);
 
@@ -25,41 +25,43 @@ const WeatherCity = () => {
 
     }
 
-    return(
+    return (
         <div>
-            <div className="site-card-border-less-wrapper">
-                <div>
-                    <Card>
-                        <Input placeholder="Basic usage" onChange={ (event) => {
-                            setSearch(event.target.value)
-                        }} onPressEnter={() => fetchApi()} />
+            <div className="page-content">
+                <div className="site-card-border-less-wrapper">
+                    <div>
+                        <Card>
+                            <Input placeholder="Basic usage" onChange={(event) => {
+                                setSearch(event.target.value)
+                            }} onPressEnter={() => fetchApi()} />
 
-                        {!city ? (
-                            <p> Not Found </p>
-                        ) : (
-                            <div>
-                                  {/* <img src={require(`https://openweathermap.org/img/w/${icons}.png`)}/> */}
+                            {!city ? (
+                                <p> Not Found </p>
+                            ) : (
+                                    <div>
+                                        {/* <img src={require(`https://openweathermap.org/img/w/${icons}.png`)}/> */}
 
-                                <h1> <img src={`https://openweathermap.org/img/w/${city.weather[0].icon}.png`}/> {city.name}</h1>
+                                        <h1> <img src={`https://openweathermap.org/img/w/${city.weather[0].icon}.png`} /> {city.name}</h1>
 
-                                <Row justify="center">
-                                    <Col span={8}>
-                                        <p>feels_like: {city.main.feels_like} </p>
-                                    </Col>
-                                    <Col span={8}>
-                                        <p>Temp: {city.main.temp} </p>
-                                    </Col>
-                                    <Col span={8}>
-                                        <p>feels_like: {city.main.feels_like} </p>
-                                    </Col>
-                                    <Col span={8}>
-                                        <p>humidity: {city.main.humidity}</p>
-                                    </Col>
-                                </Row>
-                            </div>
-                        )
-                        }
-                    </Card>
+                                        <Row justify="center">
+                                            <Col span={8}>
+                                                <p>Feels_like: {city.main.feels_like}℃ </p>
+                                            </Col>
+                                            <Col span={8}>
+                                                <p>Temp: {city.main.temp}℃ </p>
+                                            </Col>
+                                            <Col span={8}>
+                                                <p>feels_like: {city.main.feels_like}℃ </p>
+                                            </Col>
+                                            <Col span={8}>
+                                                <p>humidity: {city.main.humidity}</p>
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                )
+                            }
+                        </Card>
+                    </div>
                 </div>
             </div>
         </div>

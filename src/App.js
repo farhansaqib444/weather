@@ -24,7 +24,7 @@ function App() {
             <Router>
                 <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
                     <div className="logo" />
-                    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+                    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
                         <Menu.Item key="1">
                             <Link to="/">Home</Link>
                         </Menu.Item>
@@ -34,22 +34,19 @@ function App() {
                         <Menu.Item key="3">
                             <Link to="/About">About</Link>
                         </Menu.Item>
+                        <Menu.Item key="4">
+                            <Link to="/Weather">Weather</Link>
+                        </Menu.Item>
                     </Menu>
                 </Header>
                 <Switch>
-                    <Route path="/country" exact component={Country} />
+                    <Route path="/" exact /> 
+                    <Route path="/country"  component={Country} />
                     <Route path="/about"  component={About} />
+                    <Route path="/weather"  component={WeatherCity} />
                 </Switch>
             </Router>
-            <div className="page-content" style={{ height : 'calc(100vh - 70px)'}}>
-                <Row justify="center" style={{ alignItems: 'center', height: '100%' }}>
-                    <Col span={8}>
-                        <Card>
-                            <WeatherCity />
-                        </Card>
-                    </Col>
-                </Row>
-            </div>
+        
 
         </Layout>
     </div>
