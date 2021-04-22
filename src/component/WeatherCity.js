@@ -12,7 +12,7 @@ const WeatherCity = () => {
 
     const fetchApi = async () => {
         try {
-            const url = `http://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=b04af520463d0bf24895405c630a5e04\n`;
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=b04af520463d0bf24895405c630a5e04\n`;
             const response = await fetch(url);
             const resJson = await response.json();
             console.log(resJson);
@@ -38,7 +38,9 @@ const WeatherCity = () => {
                             <p> Not Found </p>
                         ) : (
                             <div>
-                                <h1> {city.weather[0].icon} {city.name}</h1>
+                                  {/* <img src={require(`https://openweathermap.org/img/w/${icons}.png`)}/> */}
+
+                                <h1> <img src={`https://openweathermap.org/img/w/${city.weather[0].icon}.png`}/> {city.name}</h1>
 
                                 <Row justify="center">
                                     <Col span={8}>
